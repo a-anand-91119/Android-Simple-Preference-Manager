@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Shared Preference</string>
+    <string name="clear_preference_data">Clear Preference Data</string>
+    <string name="boolean_text">\"Is Shared Preference Data Available: %s\"</string>
+</resources>
