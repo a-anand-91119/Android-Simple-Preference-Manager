@@ -3,7 +3,6 @@
   <a href="https://app.codacy.com/manual/a-anand-91119/Android-Simple-Preference-Manager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=a-anand-91119/Android-Simple-Preference-Manager&amp;utm_campaign=Badge_Grade_Dashboard" rel="nofollow"><img src="https://camo.githubusercontent.com/8bfcb96fada23923d178481242a6574bd3388f1d/68747470733a2f2f6170692e636f646163792e636f6d2f70726f6a6563742f62616467652f47726164652f6134646434613739393266663465393738666465386565363038363137366564" alt="Codacy Badge" data-canonical-src="https://api.codacy.com/project/badge/Grade/a4dd4a7992ff4e978fde8ee6086176ed" style="max-width:100%;"></a>
   <a href="https://jitpack.io/#a-anand-91119/Android-Simple-Preference-Manager"> <img src="https://jitpack.io/v/a-anand-91119/Android-Simple-Preference-Manager/month.svg" /></a>
   <a href="https://jitpack.io/#a-anand-91119/Android-Simple-Preference-Manager"> <img src="https://jitpack.io/v/a-anand-91119/Android-Simple-Preference-Manager.svg" /></a>
-  <a href="https://circleci.com/gh/mukeshsolanki/easypreferences/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/easypreferences/tree/master.svg?style=shield" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
   <br /><br />
   Simple Preference Manager that help to store and retrive data easily from Android SharedPreferences.
@@ -24,7 +23,7 @@ Simple Preference Manager is an independent project with ongoing development and
 Simple Preference Manager enables to perform save and retrieve operations on Android Shared Preferences with ease. Simple Preference Manager supports
  
   - Storing and retrieving objects such as String, Integer, Float, Long, Boolean
-  - Storing and retrieving Set<String>
+  - Storing and retrieving Set&lt;String&gt;
   - Storing and retrieving any custom objects that are Serializable
   - Storing all entries from Map<String, ?>
 
