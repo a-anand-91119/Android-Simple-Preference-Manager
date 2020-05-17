@@ -1,0 +1,2 @@
+# Android-Simple-Preference-Manager
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a4dd4a7992ff4e978fde8ee6086176ed)](https://app.codacy.com/manual/a-anand-91119/Android-Simple-Preference-Manager?utm_source=github.com&utm_medium=referral&utm_content=a-anand-91119/Android-Simple-Preference-Manager&utm_campaign=Badge_Grade_Dashboard)
