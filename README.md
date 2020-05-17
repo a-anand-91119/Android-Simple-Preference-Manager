@@ -97,7 +97,7 @@ preferenceManager.saveObject("Key_6", new CustomObject("data", "99"));
 (CustomObject)preferenceManager.fetchObject("Key_6", CustomObject.class);
 
 // Saving Map of Key-Value Pairs
-Map&gt;String, Float&lt; floatMap = new HashMap&gt;&lt;();
+Map<String, Float> floatMap = new HashMap<>();
 floatMap.put("ONE_F", 1f);
 floatMap.put("TWO_F", 2f);
 floatMap.put("THREE_F", 3f);
