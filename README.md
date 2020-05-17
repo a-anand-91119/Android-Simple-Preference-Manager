@@ -120,7 +120,7 @@ Boolean contains = preferenceManager.contains("KEY");
 That's pretty much it.
 
 ## Author
-Maintained by A Anand [Not Your Average Dev](https://github.com/a-anand-91119)
+Maintained by A Anand [Not Your Average Dev](https://notyouraveragedev.in)
 
 ## Contribution
 
