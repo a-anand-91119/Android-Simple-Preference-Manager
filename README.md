@@ -54,8 +54,25 @@ Once you integrated the library in your project but **how do you use it**? Well 
 
 ```java
 
+// Using Default SharedPreferences
+// Create an instance of SimplePreferenceManager using SimplePreferenceManagerBuilder
+SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this).build();
+
+// Saving Data To Shared Preferences
+preferenceManager.saveString("Key_1", "Value");
+preferenceManager.saveLong("Key_2", (long) 100);
+preferenceManager.saveFloat("Key_3", (float) 1000.1);
+preferenceManager.saveInteger("Key_4", 10);
+preferenceManager.saveBoolean("Key_5", true);
+
+// Retrieving Data From Shared Preferences
+String s = preferenceManager.fetchString("Key_1");
+Long l = preferenceManager.fetchLong("Key_2");
+Float f = preferenceManager.fetchFloat("Key_3");
+Integer i = preferenceManager.fetchInteger("Key_4");
+Boolean b = preferenceManager.fetchBoolean("Key_5");
 ```
-That's pretty much it. Looks like your all done here.
+That's pretty much it.
 
 ## Author
 Maintained by A Anand [Not Your Average Dev](https://github.com/a-anand-91119)
