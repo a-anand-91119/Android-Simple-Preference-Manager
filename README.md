@@ -59,10 +59,9 @@ Once you integrated the library in your project but **how do you use it**? Well 
 That's pretty much it. Looks like your all done here.
 
 ## Author
-Maintained by A Anand[Not Your Average Dev](https://github.com/a-anand-91119)
+Maintained by A Anand [Not Your Average Dev](https://github.com/a-anand-91119)
 
 ## Contribution
-[![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/easypreferences.svg)](https://github.com/mukeshsolanki/easypreferences/graphs/contributors)
 
   - Bug reports and pull requests are welcome.
 
