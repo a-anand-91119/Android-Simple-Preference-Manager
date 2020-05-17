@@ -56,7 +56,25 @@ Once you integrated the library in your project but **how do you use it**? Well 
 
 // Using Default SharedPreferences
 // Create an instance of SimplePreferenceManager using SimplePreferenceManagerBuilder
-SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this).build();
+SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this)
+                  .build();
+
+// Saving and Retrieving Objects
+// Enabling Object Support Using Builder
+SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this)
+                .withObjectStorageSupport()
+                .build();
+
+// Create SharedPreference File With Custom Names
+SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this)
+                .havingFileName("CustomFileName")
+                .build();
+
+// Specifying the Operation Mode
+SimplePreferenceManager preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this)
+                .havingFileName("CustomFileName")
+                .usingOperationMode(Context.MODE_PRIVATE)
+                .build();
 
 // Saving Data To Shared Preferences
 preferenceManager.saveString("Key_1", "Value");
@@ -71,6 +89,33 @@ Long l = preferenceManager.fetchLong("Key_2");
 Float f = preferenceManager.fetchFloat("Key_3");
 Integer i = preferenceManager.fetchInteger("Key_4");
 Boolean b = preferenceManager.fetchBoolean("Key_5");
+
+
+// Save Objects
+preferenceManager.saveObject("Key_6", new CustomObject("data", "99"));
+// Retrieving Objects
+(CustomObject)preferenceManager.fetchObject("Key_6", CustomObject.class);
+
+// Saving Map of Key-Value Pairs
+Map&gt;String, Float&lt; floatMap = new HashMap&gt;&lt;();
+floatMap.put("ONE_F", 1f);
+floatMap.put("TWO_F", 2f);
+floatMap.put("THREE_F", 3f);
+preferenceManager.putAll(floatMap);
+// Retrieve the data
+Float f = preferenceManager.fetchFloat("ONE_F");
+
+
+// Additional Options
+// Remove all data from Shared Preference File
+preferenceManager.removeAll();
+
+// Remove particular Key-Value Pair from Shared Preferences
+preferenceManager.removeData("KEY");
+
+// check whether Shared Preference contains particular key
+Boolean contains = preferenceManager.contains("KEY");
+
 ```
 That's pretty much it.
 
