@@ -7,12 +7,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
 import in.notyouraveragedev.sharedpreference.domain.CustomObject;
+import in.notyouraveragedev.sharedpreference.domain.NonSerializable;
 import in.notyouraveragedev.sharedpreference.util.PreferenceManager;
+import in.notyouraveragedev.simplepreference.SimplePreferenceManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private PreferenceManager preferenceManager;
+    private SimplePreferenceManager preferenceManager;
 
     private TextView tvIsSaved;
     private TextView tvCustomObject;
@@ -44,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // getting the instance of Preference Manager
-        preferenceManager = PreferenceManager.getInstance(this);
-
+        preferenceManager = new SimplePreferenceManager.SimplePreferenceManagerBuilder(this)
+                .withObjectStorageSupport()
+                .build();
         // if data is available in shared preference then load the data from shared preference
         // if its not, the save the data into shared preference
         if (savedDataExists()) {
@@ -53,6 +62,89 @@ public class MainActivity extends AppCompatActivity {
         } else {
             saveData();
         }
+
+
+        Map<String, Integer> intMap = new HashMap<>();
+        intMap.put("ONE_I", 1);
+        intMap.put("TWO_I", 2);
+        intMap.put("THREE_I", 3);
+        preferenceManager.putAll(intMap);
+
+
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("ONE_S", "1");
+        stringMap.put("TWO_s", "2");
+        stringMap.put("THREE_S", "3");
+        preferenceManager.putAll(stringMap);
+
+
+        Map<String, Long> longMap = new HashMap<>();
+        longMap.put("ONE_L", 1L);
+        longMap.put("TWO_L", 2L);
+        longMap.put("THREE_L", 3L);
+        preferenceManager.putAll(longMap);
+
+
+        Map<String, Float> floatMap = new HashMap<>();
+        floatMap.put("ONE_F", 1f);
+        floatMap.put("TWO_F", 2f);
+        floatMap.put("THREE_F", 3f);
+        preferenceManager.putAll(floatMap);
+
+
+        Map<String, Boolean> booleanMap = new HashMap<>();
+        booleanMap.put("ONE_B", true);
+        booleanMap.put("TWO_B", false);
+        booleanMap.put("THREE_B", true);
+        preferenceManager.putAll(booleanMap);
+
+
+        Map<String, CustomObject> objectMap = new HashMap<>();
+        objectMap.put("ONE_O", new CustomObject());
+        objectMap.put("TWO_O", new CustomObject());
+        objectMap.put("THREE_O", new CustomObject());
+        preferenceManager.putAll(objectMap);
+
+
+        Map<String, NonSerializable> objectMap2 = new HashMap<>();
+        objectMap2.put("ONE_O", new NonSerializable());
+        objectMap2.put("TWO_O", new NonSerializable());
+        objectMap2.put("THREE_O", new NonSerializable());
+        try {
+            preferenceManager.putAll(objectMap2);
+        } catch (UnsupportedOperationException e) {
+            Log.e("Error", Objects.requireNonNull(e.getMessage()));
+        }
+
+        Set<String> stringSet = new HashSet<>();
+        stringSet.add("ONE");
+        stringSet.add("TWO");
+        stringSet.add("THREE");
+
+        Set<String> stringSet2 = new HashSet<>();
+        stringSet2.add("ONE");
+        stringSet2.add("TWO");
+        stringSet2.add("THREE");
+
+        Map<String, Set<String>> stringSetMap = new HashMap<>();
+        stringSetMap.put("ONE_SS", stringSet);
+        stringSetMap.put("TWO_SS", stringSet2);
+        preferenceManager.putAll(stringSetMap);
+
+
+        Set<Integer> intSet = new HashSet<>();
+        intSet.add(1);
+        intSet.add(2);
+        intSet.add(3);
+
+        Map<String, Set<Integer>> intSetMap = new HashMap<>();
+        intSetMap.put("ONE_IS", intSet);
+        try {
+            preferenceManager.putAll(intSetMap);
+        } catch (UnsupportedOperationException e) {
+            Log.e("Error", Objects.requireNonNull(e.getMessage()));
+        }
+
     }
 
     private boolean savedDataExists() {
@@ -69,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         preferenceManager.saveString("String", "this is saved String");
         preferenceManager.saveLong("Long", (long) 100);
         preferenceManager.saveFloat("Float", (float) 1000.1);
-        preferenceManager.saveInteger("Integer", (int) 10);
+        preferenceManager.saveInteger("Integer", 10);
         preferenceManager.saveObject("Object", new CustomObject("object name", "99"));
 
         fetchAndDisplayData();
@@ -87,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         tvLong.setText(String.valueOf(preferenceManager.fetchLong("Long")));
         tvFloat.setText(String.valueOf(preferenceManager.fetchFloat("Float")));
         tvString.setText(preferenceManager.fetchString("String"));
-        tvCustomObject.setText(((CustomObject) preferenceManager.fetchObject("Object", CustomObject.class)).toString());
+        tvCustomObject.setText((preferenceManager.fetchObject("Object", CustomObject.class)).toString());
     }
 
 
