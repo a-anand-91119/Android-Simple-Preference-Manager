@@ -127,7 +127,13 @@ Maintained by A Anand [Not Your Average Dev](https://notyouraveragedev.in)
 
   - Bug reports and pull requests are welcome.
 
-  ## License
+## Change Log
+  - Version 1.1
+     - added support for storing and retrieving set of strings
+  - version 1.0
+     - initial commit
+    
+## License
   ```
   MIT License
 
