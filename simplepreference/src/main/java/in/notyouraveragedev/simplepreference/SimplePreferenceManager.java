@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -83,7 +84,7 @@ public class SimplePreferenceManager {
             if (this.isObjectSupportNeeded)
                 simplePreferenceManager = new SimplePreferenceManager(new Gson());
             else
-                simplePreferenceManager = new SimplePreferenceManager();
+                simplePreferenceManager = new SimplePreferenceManager(null);
 
             simplePreferenceManager.setSharedPreferences(getSharedPreferences(this.context, this.fileName, this.mode));
             return simplePreferenceManager;
@@ -100,10 +101,6 @@ public class SimplePreferenceManager {
 
     private void setSharedPreferences(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
-    }
-
-    private SimplePreferenceManager() {
-        gson = null;
     }
 
     private SimplePreferenceManager(Gson gson) {
@@ -243,6 +240,28 @@ public class SimplePreferenceManager {
     }
 
     /**
+     * Method to fetch Set of Strings data stored in shared preference against the specified key.
+     * If no data is found then an empty HashSet<String> will be returned.
+     *
+     * @param key the key against which data needs to be fetched
+     * @return the data stored against the specified key
+     */
+    public Set<String> fetchStringSet(String key) {
+        return sharedPreferences.getStringSet(key, new HashSet<String>());
+    }
+
+    /**
+     * Method to store Set of Strings data into shared preference against the specified key.
+     *
+     * @param key   the key against which data needs to be stored
+     * @param value the data to be stored
+     * @return true, if data is stored successfully, otherwise returns false
+     */
+    public boolean saveStringSet(String key, Set<String> value) {
+        return sharedPreferences.edit().putStringSet(key, value).commit();
+    }
+
+    /**
      * method to fetch Float data stored in shared preference against the specified key.
      *
      * @param key the key against which data needs to be fetched
@@ -261,6 +280,7 @@ public class SimplePreferenceManager {
     public Boolean removeData(String key) {
         return sharedPreferences.edit().remove(key).commit();
     }
+
 
     /**
      * Method to check whether there is any data stored against the specified key
